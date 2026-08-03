@@ -1,12 +1,28 @@
+import { Routes, Route } from "react-router-dom";
+
+import Layout from "./components/Layout";
+
+import Login from "./pages/Login";
+import Dashboard from "./pages/Dashboard";
+import Recipes from "./pages/Recipes";
+import AddRecipe from "./pages/AddRecipe";
+import RecipeDetails from "./pages/RecipeDetails";
+import NotFound from "./pages/NotFound";
+
 function App() {
   return (
-    <div className="min-h-screen bg-slate-100 flex items-center justify-center">
-      <div className="bg-white p-10 rounded-2xl shadow-xl">
-        <h1 className="text-4xl font-bold text-blue-600">Recipe Book Pro</h1>
+    <Routes>
+      <Route path="/" element={<Login />} />
 
-        <p className="mt-3 text-gray-600">Project Started Successfully 🚀</p>
-      </div>
-    </div>
+      <Route element={<Layout />}>
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/recipes" element={<Recipes />} />
+        <Route path="/add-recipe" element={<AddRecipe />} />
+        <Route path="/recipe/:id" element={<RecipeDetails />} />
+      </Route>
+
+      <Route path="*" element={<NotFound />} />
+    </Routes>
   );
 }
 
