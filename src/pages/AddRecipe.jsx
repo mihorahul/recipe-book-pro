@@ -1,4 +1,5 @@
 import { useState } from "react";
+import IngredientSection from "../components/IngredientSection";
 
 function AddRecipe() {
   const [ingredients, setIngredients] = useState([
@@ -94,64 +95,12 @@ function AddRecipe() {
         </div>
 
         {/* Ingredients */}
-        <div>
-          <div className="flex justify-between items-center mb-4">
-            <h2 className="text-2xl font-bold">Ingredients</h2>
-
-            <button
-              type="button"
-              onClick={addIngredient}
-              className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700"
-            >
-              + Add Ingredient
-            </button>
-          </div>
-
-          {ingredients.map((ingredient, index) => (
-            <div key={index} className="grid grid-cols-4 gap-4 mb-4">
-              <input
-                type="text"
-                placeholder="Ingredient Name"
-                value={ingredient.name}
-                onChange={(e) =>
-                  handleIngredientChange(index, "name", e.target.value)
-                }
-                className="border rounded-lg px-4 py-3"
-              />
-
-              <input
-                type="text"
-                placeholder="Quantity"
-                value={ingredient.quantity}
-                onChange={(e) =>
-                  handleIngredientChange(index, "quantity", e.target.value)
-                }
-                className="border rounded-lg px-4 py-3"
-              />
-
-              <input
-                type="text"
-                placeholder="Unit"
-                value={ingredient.unit}
-                onChange={(e) =>
-                  handleIngredientChange(index, "unit", e.target.value)
-                }
-                className="border rounded-lg px-4 py-3"
-              />
-              <button
-                type="button"
-                onClick={() => removeIngredient(index)}
-                className="bg-red-500 text-white rounded-lg px-4 py-2 hover:bg-red-600"
-              >
-                Delete
-              </button>
-            </div>
-          ))}
-        </div>
-
-        <pre className="bg-slate-100 p-4 rounded mt-6">
-          {JSON.stringify(ingredients, null, 2)}
-        </pre>
+        <IngredientSection
+          ingredients={ingredients}
+          addIngredient={addIngredient}
+          removeIngredient={removeIngredient}
+          handleIngredientChange={handleIngredientChange}
+        />
 
         {/* Save Button */}
         <button
