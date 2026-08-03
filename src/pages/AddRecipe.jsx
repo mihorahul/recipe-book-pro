@@ -2,6 +2,7 @@ import { useState } from "react";
 import IngredientSection from "../components/recipe/IngredientSection";
 import StepSection from "../components/recipe/StepSection";
 import Button from "../components/ui/Button";
+import Input from "../components/ui/Input";
 
 function AddRecipe() {
   const [ingredients, setIngredients] = useState([
@@ -74,11 +75,7 @@ function AddRecipe() {
         <div>
           <label className="block mb-2 font-semibold">Recipe Name</label>
 
-          <input
-            type="text"
-            placeholder="Recipe Name"
-            className="w-full border rounded-lg px-4 py-3"
-          />
+          <Input label="Recipe Name" placeholder="Recipe Name" />
         </div>
 
         {/* Category, Prep Time, Cook Time */}
