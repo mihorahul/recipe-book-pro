@@ -1,6 +1,7 @@
 import { useState } from "react";
-import IngredientSection from "../components/IngredientSection";
-import StepSection from "../components/StepSection";
+import IngredientSection from "../components/recipe/IngredientSection";
+import StepSection from "../components/recipe/StepSection";
+import Button from "../components/ui/Button";
 
 function AddRecipe() {
   const [ingredients, setIngredients] = useState([
@@ -139,12 +140,7 @@ function AddRecipe() {
         />
 
         {/* Save Button */}
-        <button
-          type="submit"
-          className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700"
-        >
-          Save Recipe
-        </button>
+        <Button type="submit">Save Recipe</Button>
       </form>
     </div>
   );
