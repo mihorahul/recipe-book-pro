@@ -1,5 +1,6 @@
 import { useState } from "react";
 import IngredientSection from "../components/IngredientSection";
+import StepSection from "../components/StepSection";
 
 function AddRecipe() {
   const [ingredients, setIngredients] = useState([
@@ -9,6 +10,35 @@ function AddRecipe() {
       unit: "",
     },
   ]);
+
+  const [steps, setSteps] = useState([
+    {
+      title: "",
+      description: "",
+      quote: "",
+    },
+  ]);
+
+  function addStep() {
+    setSteps([
+      ...steps,
+      {
+        title: "",
+        description: "",
+        quote: "",
+      },
+    ]);
+  }
+
+  function removeStep(index) {
+    setSteps(steps.filter((_, i) => i !== index));
+  }
+
+  function handleStepChange(index, field, value) {
+    const updated = [...steps];
+    updated[index][field] = value;
+    setSteps(updated);
+  }
 
   function addIngredient() {
     setIngredients([
@@ -100,6 +130,12 @@ function AddRecipe() {
           addIngredient={addIngredient}
           removeIngredient={removeIngredient}
           handleIngredientChange={handleIngredientChange}
+        />
+        <StepSection
+          steps={steps}
+          addStep={addStep}
+          removeStep={removeStep}
+          handleStepChange={handleStepChange}
         />
 
         {/* Save Button */}
