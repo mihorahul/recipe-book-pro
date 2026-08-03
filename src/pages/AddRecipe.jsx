@@ -28,6 +28,11 @@ function AddRecipe() {
     setIngredients(updatedIngredients);
   }
 
+  function removeIngredient(index) {
+    const updatedIngredients = ingredients.filter((_, i) => i !== index);
+
+    setIngredients(updatedIngredients);
+  }
   return (
     <div className="bg-white rounded-xl shadow p-8">
       <h1 className="text-3xl font-bold mb-6">Add New Recipe</h1>
@@ -103,7 +108,7 @@ function AddRecipe() {
           </div>
 
           {ingredients.map((ingredient, index) => (
-            <div key={index} className="grid grid-cols-3 gap-4 mb-4">
+            <div key={index} className="grid grid-cols-4 gap-4 mb-4">
               <input
                 type="text"
                 placeholder="Ingredient Name"
@@ -133,6 +138,13 @@ function AddRecipe() {
                 }
                 className="border rounded-lg px-4 py-3"
               />
+              <button
+                type="button"
+                onClick={() => removeIngredient(index)}
+                className="bg-red-500 text-white rounded-lg px-4 py-2 hover:bg-red-600"
+              >
+                Delete
+              </button>
             </div>
           ))}
         </div>
